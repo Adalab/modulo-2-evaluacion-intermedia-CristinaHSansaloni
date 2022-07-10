@@ -1,47 +1,56 @@
-"use strict";
+'use strict';
 
-const entry = document.querySelector('js-entry'); 
-const btn = document.querySelector('.js-btn');
-const attempts = document.querySelector('.js-attempts');
-const acierto = false;
-const intentos = 0;
-
-
+// Elementos de HTML
+const userNumberInput = document.querySelector('.js_userNumber');
+const tipsElement = document.querySelector('.js_tips');
+const testButton = document.querySelector('.js_testButton');
+const triesElement = document.querySelector('.js_tries');
 
 
-
+// Funciones
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
-    }
-
-
-const iniciar = () =>{
-    const randomNumber = getRandomNumber(100);
-    
-    if (acierto == false){ 
-        console.log("Escribe el número y dale a prueba");
-    }else if (entry > randomNumber){
-        alert("Demasiado alto");
-        intentos++;
-
-    }else if (entry < randomNumber){
-        alert("Demasiado bajo");
-        intentos++;
-    }else if (entry == randomNumber){
-        alert("Has gananado campeona");
-    }else (entry != randomNumber) {
-        alert("El número debe estar entre 1 y 100");
-    }
 }
 
-function entry() {  
-    const selectValue = select.value;
-    entry.innerHTML = selectValue;
+
+function checkNumbers() {
+
+const userNumber = parseInt(userNumberInput.value);
+
+if (isNaN(userNumber)) {
+    tipsElement.innerHTML = 'El número debe estar entre 1 y 100.';
+    } else if (userNumber > 100) {
+    tipsElement.innerHTML = 'El número debe estar entre 1 y 100.';
+    } else if (userNumber < 1) {
+    tipsElement.innerHTML = 'El número debe estar entre 1 y 100.';
+    } else if (userNumber > randomNumber) {
+    tipsElement.innerHTML = 'Demasiado alto.';
+    } else if (userNumber < randomNumber) {
+    tipsElement.innerHTML = 'Demasiado bajo.';
+    } else if (userNumber === randomNumber) {
+    tipsElement.innerHTML = 'Has ganado campeona!.';
+    } 
 }
 
-function handleClick(ev) { 
-    ev.preventDefault();
-    entry();
+
+function incrementCounter() {
+   triesCounter++;  
+   triesElement.innerHTML = triesCounter;
 }
 
-btn.addEventListener("click", handleClick)
+
+function handleClick(event) {
+    event.preventDefault();
+    checkNumbers();
+    incrementCounter();
+}
+
+
+// Eventos
+testButton.addEventListener('click', handleClick);
+
+
+// Código que se ejecuta cuando carga la página 
+let triesCounter = 0; 
+const randomNumber = getRandomNumber (100);
+console.log(`Mi número aleatorio es ${randomNumber}`);

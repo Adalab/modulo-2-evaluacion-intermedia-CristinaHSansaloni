@@ -8,15 +8,20 @@
     <title>Evaluación intermedia - Módulo 2</title>
   </head>
   <body>
-    <main>
-      <h1>Adivina el número</h1>
-      <p>Introduce aquí tu número</p>
-      <form action="">
-        <input type="text" class="js-entry entry" />
-        <input type="button" value="Prueba" class="js-btn" />
+    <main class="container">
+      <h1 class="title">Adivina el número</h1>
+      <form action="" class="form">
+        <label class="label" for="userNumber">Introduce aquí tu número:</label>
+        <input
+          class="number js_userNumber"
+          type="text"
+          name="userNumber"
+          id="userNumber"
+        />
+        <input class="button js_testButton" type="button" value="Prueba" />
       </form>
-      <p class="js-pista">Pista: Escribe el número y dale a Prueba</p>
-      <p class="js-attempts">Número de intentos: 0</p>
+      <p class="set js_tips">Pista: Escribe el número y dale a Prueba</p>
+      <p class="set">Número de intentos: <span class="js_tries">0</span></p>
     </main>
     <script src="./js/main.js"></script>
   </body>
